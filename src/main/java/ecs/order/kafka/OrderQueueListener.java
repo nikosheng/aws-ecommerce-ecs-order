@@ -26,6 +26,7 @@ public class OrderQueueListener {
         log.info("Received shipment " + shipment.getShipmentId());
         Order order = orderService.findOrderById(shipment.getOrderId());
         order.setShipmentId(shipment.getShipmentId());
+        order.setShipmentAddress(shipment.getShipmentAddress());
         orderService.updateOrder(order);
     }
 }
