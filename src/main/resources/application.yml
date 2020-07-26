@@ -1,0 +1,23 @@
+server:
+  port: 8000
+  servlet:
+    context-path: /api/v1
+spring:
+  application:
+    name: ecs-order
+  profiles:
+    active: test
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    shutdown:
+      enabled: false
+
