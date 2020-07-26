@@ -11,6 +11,6 @@ public class AwsXrayConfig {
 
     @Bean
     public Filter TracingFilter() {
-        return new AWSXRayServletFilter("eks-order");
+        return new AWSXRayServletFilter("ecs-order");
     }
 }
