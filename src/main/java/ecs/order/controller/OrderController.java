@@ -7,6 +7,7 @@ import ecs.order.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
@@ -23,6 +24,9 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Value("${version:v1}")
+    private String version;
+
     @GetMapping("/order/get/{orderId}")
     public OrderVO getOrder(@PathVariable Long orderId) {
         LOGGER.info("getOrder - {}", orderId);
@@ -32,7 +36,7 @@ public class OrderController {
         try {
             orderVO = OrderVO.OrderVOBuilder.newBuilder()
                      .tag("ecs-order")
-                     .version("version-1")
+                     .version(version)
                      .ip(InetAddress.getLocalHost().getHostAddress())
                      .orderId(order.getOrderId())
                      .customerId(order.getCustomerId())

@@ -27,3 +27,5 @@ kafka:
     servers: ${KAFKA_BROKDER}
   group:
     id: ${KAFKA_GROUP_ID:group-1}
+
+version: ${VERSION}
